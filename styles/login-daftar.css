@@ -1,0 +1,88 @@
+div.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.page-content {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    height: 80%;
+    max-height: 1000px;
+    flex: 0.8;
+  
+    /* Styling */
+    background-color: rgb(15, 26, 35);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+  }
+
+div.content {
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* background-color: black; */
+    color: black;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    margin-top: 35px;
+}
+
+div.login-box {
+    background: rgb(15, 37, 54);
+    /* background-color: rgb(15, 26, 35); */
+    width: min-content;
+    height: 400px;
+    flex: 0.65;
+    padding: 35px;
+}
+
+div.login-box p {
+    color: grey;
+}
+
+div.login-box p.title {
+    color: white;
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 55px;
+}
+
+div.login-box p.form-label {
+    color: lightgrey;
+    margin-bottom: 12px;
+}
+
+div.login-box input {
+    margin-bottom: 30px;
+    width: 380px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(15, 26, 35);
+    border: none;
+    padding: 10px 12px;
+}
+
+div.login-box button {
+    font-family: 'Montserrat', sans-serif;
+    padding: 12px 18px;
+    border-radius: 19px;
+    display: block;
+    border: none;
+    color: white;
+    background-color: rgb(69, 78, 209);
+    margin-bottom: 55px;
+}
+
+p a {
+    color: rgb(69, 78, 209);
+}
