@@ -20,18 +20,18 @@
                 <div class="header">
                     <img class="logo" src="resources/k-tech-horizontal.png" alt="">
                     <div style="flex-grow: 2.4; flex-basis: 0;"></div>
-                    <a class="header_links" href="login.html">Login</a>
-                    <a class="header_links" href="daftar.html">Daftar</a>
+                    <a class="header_links" href="login.php">Login</a>
+                    <a class="header_links" href="signup.php">Signup</a>
                     <a class="header_links" href="">About Us</a>
                 </div>
                 <div class="content">
                     <div class="introduction">
                         <p class="title">K Tech</p>
-                        <p class="description">Bijak Pilih Telefon Di Sini</p> 
+                        <p class="description">Pick your new mobile phone here</p> 
                     </div>
                     <div class="buttons">
-                        <button><a class="header_links" href="login.html">Login</a></button>
-                        <button><a class="header_links" href="daftar.html">Daftar</a></button>
+                        <button><a class="header_links" href="login.php">Login</a></button>
+                        <button><a class="header_links" href="daftar.php">Daftar</a></button>
                     </div>
                 </div>
             </div>

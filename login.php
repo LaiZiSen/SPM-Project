@@ -11,12 +11,9 @@
         
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/general.css">
-        <link rel="stylesheet" href="styles/login-daftar.css">
+        <link rel="stylesheet" href="styles/login-signup.css">
 
         <title>Login</title>
-
-        <style>
-        </style>
     </head>
     <body>
         <div class="overlay">
@@ -26,18 +23,21 @@
                         <img class="logo" src="resources/k-tech-horizontal.png" alt="">
                     </a>
                     <div style="flex-grow: 2.4; flex-basis: 0;"></div>
-                    <a class="header_links" href="daftar.html">Daftar</a>
+                    <a class="header_links" href="signup.php">Signup</a>
                     <a class="header_links" href="">About Us</a>
                 </div>
                 <div class="content">
                     <div class="login-box">
                         <p class="title">Login</p>
-                        <p class="form-label">Email</p>
-                        <input type="text" placeholder="sample@gmail.com">
-                        <p class="form-label">Password</p>
-                        <input type="password" placeholder="password">
-                        <button>Log Masuk</button>
-                        <p>Tidak ada akaun? <a href="daftar.html">Daftar Akaun</a></p>
+                        <form action="login.inc.php" method ="POST">
+                            <p class="form-label">Username</p>
+                            <input type="text" name="username" placeholder="sample">
+                            <p class="form-label">Password</p>
+                            <input type="password" name="password"
+                            placeholder="password">
+                            <button type="submit" name="userlogin">Log Masuk</button>
+                        </form>
+                        <p>Don't have account? <a href="signup.php">Signup</a></p>
                     </div>
                 </div>
             </div>
