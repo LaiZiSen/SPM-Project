@@ -42,5 +42,23 @@
                 </div>
             </div>
         </div>
+
+        <?php
+            if (isset($_GET["error"])){
+                if(isset($_GET["error"] == "stmtFailed")) {
+                    echo "<p>Something went wrong try again!</p>"
+                } 
+                else if(isset($_GET["error"] == "emptyInput")) {
+                    echo "<p>Fill in all fields!</p>"
+                }
+                else if(isset($_GET["error"] == "usernameTaken")) {
+                    echo "<p>Your username is taken</p>"
+                }
+                else if(isset($_GET["error"] == "passwordLength")) {
+                    echo "<p>Password should be at least 8 letters long</p>"
+                }
+            }
+        ?>
+
     </body>
 </html>
