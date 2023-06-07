@@ -37,8 +37,26 @@
                             <input type="text" placeholder="sample" name='username'>
                             <p class="form-label">Password</p>
                             <input type="password" placeholder="password" name='password'>
-                            <button type='submit' name="signup">Signup</button>
+                            <button type='submit' name="usersignup">Signup</button>
                             <p>Have an account?<a href="login.php">Login</a></p>
+
+        <?php
+            if (isset($_GET["error"])){
+                if($_GET["error"] == "stmtFailed") {
+                    echo '<p class = "error">Something went wrong try again!</p>';
+                } 
+                else if($_GET["error"] == "emptyInput") {
+                    echo '<p class = "error">Fill in all fields!</p>';
+                }
+                else if($_GET["error"] == "usernameTaken") {
+                    echo '<p class = "error">Your username is taken</p>';
+                }
+                else if($_GET["error"] == "passwordLength") {
+                    echo '<p class = "error">Password should be at least 8 letters long</p>';
+                }
+            }
+        ?>
+
                         </form>
                     </div>
                 </div>

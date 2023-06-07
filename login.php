@@ -29,36 +29,34 @@
                 <div class="content">
                     <div class="login-box">
                         <p class="title">Login</p>
-                        <form action="login.inc.php" method ="POST">
+                        <form action="includes/login.inc.php" method ="POST">
                             <p class="form-label">Username</p>
                             <input type="text" name="username" placeholder="sample">
                             <p class="form-label">Password</p>
                             <input type="password" name="password"
                             placeholder="password">
                             <button type="submit" name="userlogin">Log Masuk</button>
+                            <p>Don't have account? <a href="signup.php">Signup</a></p>
+        <?php
+            if (isset($_GET["error"])){
+                if($_GET["error"] == "stmtFailed") {
+                    echo '<p class = "error">Something went wrong try again!</p>';
+                } 
+                else if($_GET["error"] == "emptyInput") {
+                    echo '<p class = "error">Fill in all fields!</p>';
+                }
+                else if($_GET["error"] == "logicError") {
+                    echo '<p class = "error">Something went wrong try again!</p>';
+                }
+                else if($_GET["error"] == "wrongLogin") {
+                    echo '<p class = "error">Check your login credentials</p>';
+                }
+            }
+        ?>
                         </form>
-                        <p>Don't have account? <a href="signup.php">Signup</a></p>
                     </div>
                 </div>
             </div>
         </div>
-
-        <?php
-            if (isset($_GET["error"])){
-                if(isset($_GET["error"] == "stmtFailed")) {
-                    echo "<p>Something went wrong try again!</p>"
-                } 
-                else if(isset($_GET["error"] == "emptyInput")) {
-                    echo "<p>Fill in all fields!</p>"
-                }
-                else if(isset($_GET["error"] == "usernameTaken")) {
-                    echo "<p>Your username is taken</p>"
-                }
-                else if(isset($_GET["error"] == "passwordLength")) {
-                    echo "<p>Password should be at least 8 letters long</p>"
-                }
-            }
-        ?>
-
     </body>
 </html>

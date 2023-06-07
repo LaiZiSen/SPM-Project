@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['signup'])) {
+if (isset($_POST['usersignup'])) {
     
     $username = $_POST['username'];
     $password = $_POST['password'];

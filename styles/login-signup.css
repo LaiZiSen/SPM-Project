@@ -87,3 +87,8 @@ div.login-box button {
 p a {
     color: rgb(69, 78, 209);
 }
+
+div.login-box p.error {
+    color:  red;
+    font-weight: bold;
+} 
