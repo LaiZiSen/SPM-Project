@@ -126,7 +126,32 @@ function loginUser($conn, $username, $password) {
 
         // header("location: ../home.php?your_name=" . $uidExists['username'] . "&admin=" . $_SESSION['admin']);
         //change to the main page in the fture
-        header("location: ../home.php");
+        header("location: ../menu.php");
         exit();
+    }
+}
+
+//tools
+function clearSession(){
+    session_unset();
+    session_destroy();
+}
+
+function isUserLoggedIn(){
+
+    session_start();
+
+    if (
+        !isset($_SESSION['username']) || 
+        empty($_SESSION['username']) ||
+        !isset($_SESSION['uid']) || 
+        empty($_SESSION['uid']) ||
+        !isset($_SESSION['admin']) || 
+        empty($_SESSION['admin'])   
+    ) {
+        return false;
+    } 
+    else {
+        return true;
     }
 }

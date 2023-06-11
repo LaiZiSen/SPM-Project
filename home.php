@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+include "includes/functions.inc.php";
+
+if (isUserLoggedIn()) {
+    header("Location: menu.php");
+    exit();
+} 
+?>
+
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -31,7 +42,7 @@
                     </div>
                     <div class="buttons">
                         <button><a class="header_links" href="login.php">Login</a></button>
-                        <button><a class="header_links" href="daftar.php">Daftar</a></button>
+                        <button><a class="header_links" href="signup.php">Signup</a></button>
                     </div>
                 </div>
             </div>
