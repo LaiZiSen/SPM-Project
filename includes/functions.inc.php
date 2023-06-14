@@ -100,7 +100,7 @@ function loginUser($conn, $username, $password) {
     $uidExists = uidExists($conn, $username);
 
     if ($uidExists == false) {
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../login.php?error=wrongLogin");
         exit();
     }
 
@@ -108,7 +108,7 @@ function loginUser($conn, $username, $password) {
     $checkedPassword = ($password == $storedPassword);
 
     if ($checkedPassword == false) {
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../login.php?error=wrongLogin");
         exit();
     } 
     else if ($checkedPassword == true) {

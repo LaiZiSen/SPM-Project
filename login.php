@@ -19,7 +19,7 @@
         <div class="overlay">
             <div class="page-content">
                 <div class="header" style="box-shadow: none;">
-                    <a href="home.html">
+                    <a href="home.php">
                         <img class="logo" src="resources/k-tech-horizontal.png" alt="">
                     </a>
                     <div style="flex-grow: 2.4; flex-basis: 0;"></div>
@@ -35,7 +35,7 @@
                             <p class="form-label">Password</p>
                             <input type="password" name="password"
                             placeholder="password">
-                            <button type="submit" name="userlogin">Log Masuk</button>
+                            <button type="submit" name="userlogin">Login</button>
                             <p>Don't have account? <a href="signup.php">Signup</a></p>
         <?php
             if (isset($_GET["error"])){
