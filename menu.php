@@ -33,7 +33,9 @@ if (!isUserLoggedIn()) {
                     <p><?php echo $_SESSION['username']; ?></p>
                     </div>
                     <div class='middle-section'>    
-                        <img class="logo" src="resources/k-tech-horizontal.png" alt="">
+                        <a href="http://localhost/k-tech/">
+                            <img class="logo" src="resources/k-tech-horizontal.png" alt="">
+                        </a>
                     </div>
                     <div class='right-section'>
                         <a class="header-link" href="includes/logout.inc.php">Logout</a>

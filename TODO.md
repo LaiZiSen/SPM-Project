@@ -2,7 +2,7 @@
 
 
 ### Frontend
-- [ ] K-Tech Logo 
+- [x] K-Tech Logo 
     - Description: It should be able to take users back to the root url that takes them to either **menu** or **home** page
 
 - [ ] Finish Menu Page
@@ -21,6 +21,9 @@
 - [ ] Add or Remove About Me page
 
 ### Backend
+- [ ] Signup auto login function
+    - Description: User should immedietly be logged in after sign up
+
 - [ ] Favourite handling 
     - Description: User should be able to favourite and unfavourite phones from phone suggestion
     - [ ] Pop up that notifies user if the procedure **added**, **removed** or **failed**

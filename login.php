@@ -19,7 +19,7 @@
         <div class="overlay">
             <div class="page-content">
                 <div class="header" style="box-shadow: none;">
-                    <a href="home.php">
+                    <a href="http://localhost/k-tech/">
                         <img class="logo" src="resources/k-tech-horizontal.png" alt="">
                     </a>
                     <div style="flex-grow: 2.4; flex-basis: 0;"></div>
