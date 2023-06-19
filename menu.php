@@ -32,7 +32,7 @@ if (!isUserLoggedIn()) {
                     <div class='left-section'>
                     <p><?php echo $_SESSION['username']; ?></p>
                     </div>
-                    <div class='middle-section'>    
+                    <div class='middle-section'>
                         <a href="http://localhost/k-tech/">
                             <img class="logo" src="resources/k-tech-horizontal.png" alt="">
                         </a>
@@ -41,7 +41,15 @@ if (!isUserLoggedIn()) {
                         <a class="header-link" href="includes/logout.inc.php">Logout</a>
                     </div>
                 </div>
-                <div class="content">
+                <div class="content">   
+                    <button onclick="redirect('info.php')">Phone Information</button>
+                    <button onclick="redirect('suggestion.php')">Phone Suggestion</button>
+                    <button onclick="redirect('favourite.php')">Favourite</button>  
+                    <script>
+                        function redirect(page) {
+                            window.location.href = page;    
+                        }
+                    </script>
                 </div>
             </div>
         </div>

@@ -1,0 +1,76 @@
+div.header {
+    /* layout */
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color:rgb(15, 26, 35);
+
+    /* spacing */
+    padding: 22px 22px;
+
+    /* font */
+    font-weight: bold;
+}
+
+div.header a, div.header p {
+    /* color */
+    color: #fff;
+
+    /* layout */
+    flex: 0.6;
+    margin: 0 15px;
+    width: fit-content;
+    max-width: 120px;
+
+    /* text */
+    font-size: 20px;
+}
+
+div.left-section, div.middle-section, div.right-section{
+    display: flex;
+}
+
+div.left-section, div.right-section {
+    flex: 1;
+}
+
+div.left-section {
+    align-items: start;
+}
+
+div.left-section p {
+    margin: 0 15px ;
+}
+
+div.middle-section {
+    flex: 8;
+    justify-content: center;
+}
+
+img.logo {
+    /* layout */
+    width: 100px;
+    max-height: max-content;
+    object-fit: contain;
+
+    /* spacing */
+    padding: 5px 15px;
+    border-radius: 10px;
+
+    /* color */
+    background-color: rgba(0, 4, 39, 255);
+}
+
+div.right-section {
+    align-items: end;
+}
+
+div.right-section a {
+  cursor: pointer;
+}

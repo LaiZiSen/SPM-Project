@@ -5,12 +5,12 @@
 - [x] K-Tech Logo 
     - Description: It should be able to take users back to the root url that takes them to either **menu** or **home** page
 
-- [ ] Finish Menu Page
+- [x] Finish Menu Page
     - Description: Under Menu Page there would be **Three Buttons** that lead to **Three Sites**
-    - [ ] Congfigure the buttons to link to the three sites
+    - [x] Congfigure the buttons to link to the three sites
 
-- [ ] Phone Information page
-    - [ ] Back Function to menu page
+- [x] Phone Information page
+    - [x] Back Function to menu page
 
 - [ ] Favourite List
     - [ ] Allow user to click and go to the Phone Suggestion page where the product is written
@@ -19,6 +19,10 @@
     - [ ] Phone Comparing Site
 
 - [ ] Add or Remove About Me page
+
+- [ ] Admin Pages
+    - [ ] User List Page
+    - [ ] Phone List Page
 
 ### Backend
 - [ ] Signup auto login function

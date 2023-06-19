@@ -26,8 +26,23 @@ div.page-content {
 }
 
 div.content {
-    /* spacing */
-    padding-left: 8%;
-    padding-top: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding-top: 5%;
+    padding-bottom: 10%;
 }
 
+div.content button {
+    background-color: rgb(47, 101, 192);
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    height: 100px;
+    width: 30%;
+    border:  none;
+    cursor: pointer;
+}

@@ -15,12 +15,12 @@ function emptyInputSignup($username, $password) {
 function uidExists($conn, $username) {
     $result;
     $sql = "
-        SELECT * , 'senarai_pengguna' AS table_source
-        FROM senarai_pengguna
+        SELECT * , 'user' AS table_source
+        FROM user
         WHERE username = ?
         UNION ALL
-        SELECT * , 'senarai_admin' AS table_source
-        FROM senarai_admin
+        SELECT * , 'admin' AS table_source
+        FROM admin
         WHERE username = ?
     ";
     $stmt = mysqli_stmt_init($conn);
@@ -55,7 +55,7 @@ function passwordLength($password) {
 }
 
 function createUser($conn, $username, $password){
-    $sql = "INSERT INTO senarai_pengguna (username, password) VALUES (?, ?);";
+    $sql = "INSERT INTO user (username, password) VALUES (?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=stmtFailed");
@@ -83,10 +83,10 @@ function emptyInputLogin($username, $password) {
 function isAdmin($data){
     $sourceTable = $data['table_source'];
 
-    if ($sourceTable=="senarai_admin") {
+    if ($sourceTable=="admin") {
         return true;
     }
-    else if($sourceTable == "senarai_pengguna") {
+    else if($sourceTable == "user") {
         return false;
     } 
     else {
@@ -138,9 +138,6 @@ function clearSession(){
 }
 
 function isUserLoggedIn(){
-
-    session_start();
-
     if (
         !isset($_SESSION['username']) || 
         empty($_SESSION['username']) ||
