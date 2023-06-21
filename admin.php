@@ -3,13 +3,13 @@ session_start();
 
 include "includes/functions.inc.php";
 
-if (!isUserLoggedIn()) {
+if ($admin = !isUserLoggedIn()) {
     header("Location: home.php");
     exit();
-}
-if ($_SESSION['admin'] == "true"){
-    header("Location: admin.php");
 } 
+if ($_SESSION['admin'] == "false"){
+    header("Location: menu.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ if ($_SESSION['admin'] == "true"){
         <link rel="stylesheet" href="styles/header2.css">
         <link rel="stylesheet" href="styles/general.css">
 
-        <title>Menu</title>
+        <title>Admin</title>
     </head>
     <body>
         <div class="overlay">
@@ -45,9 +45,8 @@ if ($_SESSION['admin'] == "true"){
                     </div>
                 </div>
                 <div class="content">   
-                    <button onclick="redirect('info.php')">Phone Information</button>
-                    <button onclick="redirect('suggestion.php')">Phone Suggestion</button>
-                    <button onclick="redirect('favourite.php')">Favourite</button>  
+                    <button onclick="redirect('user_list.php')">User List</button>
+                    <button onclick="redirect('phone_list.php')">Phone List</button> 
                     <script>
                         function redirect(page) {
                             window.location.href = page;    

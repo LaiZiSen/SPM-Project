@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+include "includes/functions.inc.php";
+
+if (isUserLoggedIn()) {
+    if ($_SESSION['admin'] == "true"){
+        header("Location: admin.php");
+        exit();
+    } else if ($_SESSION['admin'] == "false") {
+        header("Location: menu.php");
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>

@@ -28,7 +28,7 @@ div.page-content {
 div.content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     height: 100%;
     padding-top: 5%;

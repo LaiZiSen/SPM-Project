@@ -20,7 +20,7 @@
 
 - [ ] Add or Remove About Me page
 
-- [ ] Admin Pages
+- [x] Admin Pages
     - [ ] User List Page
     - [ ] Phone List Page
 

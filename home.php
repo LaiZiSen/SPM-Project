@@ -4,9 +4,13 @@ session_start();
 include "includes/functions.inc.php";
 
 if (isUserLoggedIn()) {
-    header("Location: menu.php");
-    exit();
-} 
+    if ($_SESSION['admin'] == "true"){
+        header("Location: admin.php");
+        exit();
+    } else if ($_SESSION['admin'] == "false") {
+        header("Location: menu.php");
+    }
+}
 ?>
 
 <!DOCTYPE html>

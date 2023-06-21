@@ -3,11 +3,11 @@ session_start();
 
 include "includes/functions.inc.php";
 
-if (!isUserLoggedIn()) {
+if ($admin = !isUserLoggedIn()) {
     header("Location: home.php");
     exit();
-}
-if ($_SESSION['admin'] == "true"){
-    header("Location: admin.php");
 } 
+if ($_SESSION['admin'] == "false"){
+    header("Location: menu.php");
+}
 ?>
