@@ -22,7 +22,16 @@
 
 - [x] Admin Pages
     - [ ] User List Page
+        - [ ] Print Function
+        - [ ] Delete
+        - [ ] Download
+        - [ ] Upload
     - [ ] Phone List Page
+        - [ ] Delete, Add
+        - [ ] Download
+        - [ ] Edit
+        - [ ] Print
+        - [ ] Upload
 
 ### Backend
 - [ ] Signup auto login function
@@ -50,3 +59,8 @@
 - [ ] Change Databse and flow cart namings to english and align them with the code 
     - [ ] Database names
     - [ ] Page names
+
+### Questions
+- [ ] Ask teacher about ERD
+    - Description: 
+        how do i express that the user picks favourites and list em on favourites table
