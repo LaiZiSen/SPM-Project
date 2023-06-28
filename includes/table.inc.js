@@ -21,6 +21,14 @@ function createTableRow(phone, tableBody) {
 function displaySelectedRowData(phone) {
     const phoneNameElement = document.querySelector(".tableHeader .selectedItemName");
 
-    phoneNameElement.textContent = phone.phone_name;
+    // phoneNameElement.textContent = phone.username;
+    if (phone.phone_name) {
+        phoneNameElement.textContent = phone.phone_name;
+    } else if (phone.username) {
+        phoneNameElement.textContent = phone.username;
+    } else {
+        phoneNameElement.textContent = 'null';
+    }
+      
 }
 

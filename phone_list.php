@@ -75,7 +75,6 @@ if ($_SESSION['admin'] == "false"){
                 </tr>
                 </thead>
                 <tbody>
-                    <?php //include "includes/testPhoneList.inc.php" ?>
                     <?php include "includes/phoneList.inc.php"; ?>
                 </tbody>
             </table>

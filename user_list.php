@@ -49,7 +49,26 @@ if ($_SESSION['admin'] == "false"){
                 </script>
             </div>
         </div>
-        <div class="content"> 
+        <div class="content">
+            <div class="tableContainer">
+                <div class="tableHeader">
+                    <p class="selectedItemName"></p>
+                    <button>Delete</button>
+                    <button>Upload</button>
+                </div>
+            </div>
+            <table id="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User Name</th>
+                    <th>User Password</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php include "includes/userList.inc.php"; ?>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
