@@ -52,7 +52,7 @@ if ($_SESSION['admin'] == "false"){
         <div class="content">
             <div class="tableContainer">
                 <div class="tableHeader">
-                    <p class="selectedPhoneName"></p>
+                    <p class="selectedItemName"></p>
                     <button>Delete</button>
                     <button>Add</button>
                     <button>Edit</button>
@@ -75,6 +75,7 @@ if ($_SESSION['admin'] == "false"){
                 </tr>
                 </thead>
                 <tbody>
+                    <?php //include "includes/testPhoneList.inc.php" ?>
                     <?php include "includes/phoneList.inc.php"; ?>
                 </tbody>
             </table>
