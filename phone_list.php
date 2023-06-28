@@ -26,7 +26,7 @@ if ($_SESSION['admin'] == "false"){
         <link rel="stylesheet" href="styles/listing.css">
         <link rel="stylesheet" href="styles/header3.css">
 
-        <title>Information</title>
+        <title>Phone Table</title>
     </head>
     <body>
         <div class="header">
@@ -49,7 +49,35 @@ if ($_SESSION['admin'] == "false"){
                 </script>
             </div>
         </div>
-        <div class="content"> 
+        <div class="content">
+            <div class="tableContainer">
+                <div class="tableHeader">
+                    <p class="selectedPhoneName"></p>
+                    <button>Delete</button>
+                    <button>Add</button>
+                    <button>Edit</button>
+                    <button>Upload</button>
+                </div>
+            </div>
+            <table id="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Phone Name</th>
+                    <th>Height</th>
+                    <th>Width</th>
+                    <th>Size</th>
+                    <th>OS</th>
+                    <th>Brand</th>
+                    <th>Battery</th>
+                    <th>Image URL</th>
+                    <th>Phone URL</th>  
+                </tr>
+                </thead>
+                <tbody>
+                    <?php include "includes/phoneList.inc.php"; ?>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

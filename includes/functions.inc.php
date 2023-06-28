@@ -152,3 +152,21 @@ function isUserLoggedIn(){
         return true;
     }
 }
+
+//Table functions
+function getTable($conn, $tableName){
+    $result;
+    $sql = "SELECT * FROM " . $tableName;
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    $result = mysqli_fetch_all($resultData, MYSQLI_ASSOC);
+
+    mysqli_stmt_close($stmt);
+
+    return json_encode($result);
+}

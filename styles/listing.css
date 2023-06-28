@@ -5,4 +5,44 @@ body {
     background-color: rgb(25, 36, 45);
 }
 
+div.content {
+    padding: 5%;
+}
 
+/* table css */
+
+div.tableHeader {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+}
+
+p.selectedPhoneName {
+    margin-right: auto;
+    color: white;
+    font-size: 20px;
+}
+
+div.tableHeader button {
+    border: none;
+    margin: 0 10px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.selected {
+    background-color: rgb(5, 16, 25);
+    background-color: black;
+}
