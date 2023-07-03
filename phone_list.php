@@ -53,10 +53,10 @@ if ($_SESSION['admin'] == "false"){
             <div class="tableContainer">
                 <div class="tableHeader">
                     <p class="selectedItemName"></p>
-                    <button>Delete</button>
-                    <button>Add</button>
-                    <button>Edit</button>
-                    <button>Upload</button>
+                    <button class="delete">Delete</button>
+                    <button class="add">Add</button>
+                    <button class="edit">Edit</button>
+                    <button class="upload">Upload</button>
                 </div>
             </div>
             <table id="table">

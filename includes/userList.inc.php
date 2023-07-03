@@ -8,12 +8,14 @@ $tableName = "user";
 ?>
 <script src="includes/table.inc.js" ></script>
 <script>
+  var selectedData;
+
   function initializeTable() {
-    const phoneData = <?php echo getTable($conn, $tableName); ?>;
+    const tableData = <?php echo getTable($conn, $tableName); ?>;
     const tableBody = document.querySelector("#table tbody");
 
-    phoneData.forEach(function(phone) {
-      createTableRow(phone, tableBody);
+    tableData.forEach(function(rowData) {
+      createTableRow(rowData, tableBody);
     });
   }
 

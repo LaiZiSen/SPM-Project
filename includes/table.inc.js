@@ -1,4 +1,4 @@
-function createTableRow(phone, tableBody) {
+function createTableRow(rowData, tableBody) {
     const row = document.createElement("tr");
     row.addEventListener("click", function() {
         const selectedRow = tableBody.querySelector(".selected");
@@ -6,10 +6,11 @@ function createTableRow(phone, tableBody) {
         selectedRow.classList.remove("selected");
         }
         this.classList.add("selected");
-        displaySelectedRowData(phone);
+        selectedData = rowData;
+        displaySelectedRowData();
     });
 
-    Object.values(phone).forEach(function(value) {
+    Object.values(rowData).forEach(function(value) {
         const cell = document.createElement("td");
         cell.textContent = value;
         row.appendChild(cell);
@@ -18,16 +19,15 @@ function createTableRow(phone, tableBody) {
     tableBody.appendChild(row);
 }
 
-function displaySelectedRowData(phone) {
-    const phoneNameElement = document.querySelector(".tableHeader .selectedItemName");
+function displaySelectedRowData() {
+    const selectedNameElement = document.querySelector(".tableHeader .selectedItemName");
 
-    // phoneNameElement.textContent = phone.username;
-    if (phone.phone_name) {
-        phoneNameElement.textContent = phone.phone_name;
-    } else if (phone.username) {
-        phoneNameElement.textContent = phone.username;
+    if (selectedData.phone_name) {
+        selectedNameElement.textContent = selectedData.phone_name;
+    } else if (selectedData.username) {
+        selectedNameElement.textContent = selectedData.username;
     } else {
-        phoneNameElement.textContent = 'null';
+        selectedNameElement.textContent = '';
     }
       
 }
