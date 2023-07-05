@@ -170,3 +170,14 @@ function getTable($conn, $tableName){
 
     return json_encode($result);
 }
+
+function deleteElement($conn, $tableName, $id){
+    $sql = "DELETE FROM " . $tableName . " WHERE id = " . $id;
+
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    
+    mysqli_stmt_close($stmt);
+}
