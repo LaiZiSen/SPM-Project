@@ -68,6 +68,7 @@ if ($_SESSION['admin'] == "false"){
                     <?php include "includes/userList.inc.php"; ?>
                 </tbody>
             </table>
+            <p class="error"></p>
         </div>
     </body>
 </html>

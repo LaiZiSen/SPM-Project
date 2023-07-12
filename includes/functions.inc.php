@@ -181,3 +181,25 @@ function deleteElement($conn, $tableName, $id){
     
     mysqli_stmt_close($stmt);
 }
+
+function editElement($conn, $tableName, $data) {
+    $sql = "UPDATE $tableName SET ";
+    $setValues = [];
+
+    foreach ($data as $column => $value) {
+        // Escape the values to prevent SQL injection
+        $escapedValue = addslashes($value);
+        $setValues[] = "$column = '$escapedValue'";
+    }
+
+    $sql .= implode(', ', $setValues);
+    $sql .= " WHERE id = {$data['id']};";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    
+    mysqli_stmt_close($stmt);
+}
+

@@ -78,6 +78,66 @@ if ($_SESSION['admin'] == "false"){
                     <?php include "includes/phoneList.inc.php"; ?>
                 </tbody>
             </table>
+            <p class="error">
+                <?php
+                    $error = isset($_GET["error"]) ? $_GET["error"] : '';
+
+                    if (!empty($error)) {
+                        switch ($error) {
+                            case "Empty":
+                                echo "Check if all inputs are not empty!";
+                                break;
+                            case "Format Error":
+                                echo "Check if the format is valid!";
+                                break;
+                            case "TableName Doesn't Exist!":
+                                echo "Logic Error: Tablename is not properly passed to table.inc.js, contact the developer!";
+                                break;
+                            default:
+                                echo "Unknown Error: " . $error;
+                                break;
+                        }
+                    } else {
+                        echo "";
+                    }
+                ?>
+            </p>
         </div>
+        <div class="overlay"> <!-- testing -->
+            <div class="overlay-content">
+                <h2 class='formHeading'></h2>
+
+                <label>Phone Name:</label>
+                <input type="text" id="phone_name">
+
+                <label>Height:</label>
+                <input type="text" id="height">
+
+                <label>Width:</label>
+                <input type="text" id="width">
+
+                <label>Size:</label>
+                <input type="text" id="size">
+
+                <label>OS:</label>
+                <input type="text" id="os">
+
+                <label>Brand:</label>
+                <input type="text" id="brand">
+
+                <label>Battery:</label>
+                <input type="text" id="battery">
+
+                <label>Image URL:</label>
+                <input type="text" id="image_url">
+
+                <label>Phone URL:</label>
+                <input type="text" id="phone_url">
+                
+                <button class="closeEdit">Submit</button>
+                <button class="cancelEdit">Cancel</button>
+            </div>
+        </div>
+
     </body>
 </html>

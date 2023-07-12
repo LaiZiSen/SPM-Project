@@ -46,3 +46,54 @@ th, td {
     background-color: rgb(5, 16, 25);
     background-color: black;
 }
+
+p.error {
+    font-weight: bolder;
+    font-size: 24px;
+    color: red;
+}
+
+/* phone list only */
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0, 0.6);
+    display: none;
+    /* pointer-events: none; */
+}
+  
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(15, 37, 54);
+    padding: 20px 100px;
+}
+
+.overlay-content h2 {
+    color: white;
+    font-weight: bold;
+    font-size: 32px;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.overlay-content label {
+    color: lightgrey;
+    margin-bottom: 12px;
+}
+
+.overlay-content input {
+    display: block;
+    margin-bottom: 30px;
+    width: 380px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(15, 26, 35);
+    border: none;
+    padding: 10px 12px;
+    color: white;    
+}

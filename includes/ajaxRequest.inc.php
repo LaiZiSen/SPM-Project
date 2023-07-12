@@ -17,9 +17,23 @@ if (isset($_GET['method'])) {
                 echo "Invalid Request!";
             }
             break;
-            
+        
+        case "editElement":
+            $data = [];
+            foreach ($_GET as $key => $value) {
+                if ($key !== 'method' && $key !== 'tableName') {
+                    // Process the key-value pair here
+                    echo "Key: $key, Value: $value <br>"; //collect data
+                    $data[$key] = $value;
+                }
+            }
+            echo json_encode($data);
+            echo "<br><br><br>";
+            echo editElement($conn, $_GET['tableName'], $data);
+            break;
+
         default:
-            echo "Invalid method!";
+            echo "Invalid method. Method: " . $method;
             break;
     }
 } else {
