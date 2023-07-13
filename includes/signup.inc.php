@@ -29,6 +29,7 @@ if (isset($_POST['usersignup'])) {
     }
 
     createUser($conn, $username, $password);
+    loginUser($conn, $username, $password);
 
 } 
 else {
