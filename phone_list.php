@@ -93,6 +93,9 @@ if ($_SESSION['admin'] == "false"){
                             case "TableName Doesn't Exist!":
                                 echo "Logic Error: Tablename is not properly passed to table.inc.js, contact the developer!";
                                 break;
+                            case "Name Repeated":
+                                echo "Do not repeat the names";
+                                break;
                             default:
                                 echo "Unknown Error: " . $error;
                                 break;
@@ -134,8 +137,8 @@ if ($_SESSION['admin'] == "false"){
                 <label>Phone URL:</label>
                 <input type="text" id="phone_url">
                 
-                <button class="closeEdit">Submit</button>
-                <button class="cancelEdit">Cancel</button>
+                <button class="submit">Submit</button>
+                <button class="cancel">Cancel</button>
             </div>
         </div>
 

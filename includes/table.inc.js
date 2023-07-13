@@ -29,7 +29,6 @@ function displaySelectedRowData() {
     } else {
         selectedNameElement.textContent = '';
     }
-      
 }
 
 function checkEmpty(data, emptySample) {
@@ -62,7 +61,16 @@ function checkVariableFormat(data, expectedFormats) {
     return true;
 }
 
-function errorCheck(data, tableName){
+function checkElementNameExists (data, tableData){
+    for (var i = 0; i < tableData.length; i++) {
+        if (tableData[i][data[0]] == data[1]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function errorCheck(data, tableName, tableData){
     switch(tableName) {
         case "phone" :
             const expectedFormats = {
@@ -84,8 +92,11 @@ function errorCheck(data, tableName){
             }
 
             if (!checkVariableFormat(data, expectedFormats)) {
-                console.log("in format error");
                 return "Format Error";
+            }
+
+            if (checkElementNameExists(["phone_name",data.phone_name], tableData)) {
+                return "Name Repeated";
             }
 
             return "No Error";

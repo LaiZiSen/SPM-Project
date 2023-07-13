@@ -32,6 +32,20 @@ if (isset($_GET['method'])) {
             echo editElement($conn, $_GET['tableName'], $data);
             break;
 
+            case "addElement":
+                $data = [];
+                foreach ($_GET as $key => $value) {
+                    if ($key !== 'method' && $key !== 'tableName') {
+                        // Process the key-value pair here
+                        echo "Key: $key, Value: $value <br>"; //collect data
+                        $data[$key] = $value;
+                    }
+                }
+                echo json_encode($data);
+                echo "<br><br><br>";
+                echo addElement($conn, $_GET['tableName'], $data);
+                break;
+
         default:
             echo "Invalid method. Method: " . $method;
             break;
@@ -39,3 +53,6 @@ if (isset($_GET['method'])) {
 } else {
     echo "No Method Specified!";
 }
+
+
+//localhost/k-tech/includes/ajaxRequest.inc.php?method=addElement&tableName=phone&phone_name=as&height=1%20mm&width=2%20mm&size=2%22&os=asd&brand=12&battery=2%20mAh&image_url=aasda&phone_url=2323

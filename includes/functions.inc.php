@@ -203,3 +203,23 @@ function editElement($conn, $tableName, $data) {
     mysqli_stmt_close($stmt);
 }
 
+function addElement($conn, $tableName, $data) {
+    $sql = "INSERT INTO $tableName SET ";
+    $setValues = [];
+
+    foreach ($data as $column => $value) {
+        // Escape the values to prevent SQL injection
+        $escapedValue = addslashes($value);
+        $setValues[] = "$column = '$escapedValue'";
+    }
+
+    $sql .= implode(', ', $setValues);
+
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    
+    mysqli_stmt_close($stmt);
+}
+

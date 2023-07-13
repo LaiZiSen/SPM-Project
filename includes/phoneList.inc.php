@@ -9,6 +9,7 @@ $tableName = "phone";
 <script src="includes/table.inc.js" ></script>
 <script>
   var selectedData;
+  var tableData;
   // var deleteButton;
   // var editButton;
   // var overlay;
@@ -29,9 +30,11 @@ $tableName = "phone";
 
   //Table Functions
   function loadTable() {
-    const tableData = <?php echo getTable($conn, $tableName); ?>;
+    tableData = <?php echo getTable($conn, $tableName); ?>;
     const tableBody = document.querySelector("#table tbody");
     
+    console.log(tableData);
+
     tableBody.innerHTML = ""; 
     tableData.forEach(function(rowData) {
       createTableRow(rowData, tableBody);
@@ -53,7 +56,7 @@ $tableName = "phone";
     fetch(url)
       .then(response => {
         // Reload the current page
-        window.location.reload();
+        window.location.href = localUrl;
       })
       .catch(error => {
           console.error("Error:", error);
@@ -83,6 +86,29 @@ $tableName = "phone";
       });
   }
 
+  function addElement(data){
+    const prams = [
+      ["method", "addElement"],
+      ["tableName", "<?php echo $tableName?>"]
+    ];
+
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        prams.push([key, data[key]]);
+      }
+    }
+    
+    url = createURL(ajaxUrl, prams);
+
+    fetch(url)
+      .then(response => {
+        window.location.href = localUrl;
+      })
+      .catch(error => {
+          console.error("Error:", error);
+      });
+  }
+
   //Form Functions
   function initEditForm(){
     const heightInput = document.getElementById('height');
@@ -103,7 +129,11 @@ $tableName = "phone";
     });
 
     inputElement.addEventListener('input', function() {
-      const inputValue = this.value.replace(/[^\d.]/g, '');
+      if (this.value.startsWith("0")){
+        var inputValue = this.value.slice(-1);
+      } else {
+        var inputValue = this.value.replace(/[^\d.]/g, '');
+      }
       this.value = inputValue;
     });
 
@@ -155,7 +185,6 @@ $tableName = "phone";
     const phoneUrlInput = document.getElementById('phone_url');
 
     const extractedValues = {
-      "id": selectedData.id,
       "phone_name": phoneNameInput.value,
       "height": heightInput.value,
       "width": widthInput.value,
@@ -170,25 +199,79 @@ $tableName = "phone";
     return extractedValues;
   }
 
+  function startAddForm(){
+    // Get references to the form inputs
+    const formHeading = document.querySelector('.formHeading');
+    const phoneNameInput = document.getElementById('phone_name');
+    const heightInput = document.getElementById('height');
+    const widthInput = document.getElementById('width');
+    const sizeInput = document.getElementById('size');
+    const osInput = document.getElementById('os');
+    const brandInput = document.getElementById('brand');
+    const batteryInput = document.getElementById('battery');
+    const imageUrlInput = document.getElementById('image_url');
+    const phoneUrlInput = document.getElementById('phone_url');
+
+    // Set the values of the form inputs
+    formHeading.textContent = "Add Element";
+    phoneNameInput.value = "";
+    heightInput.value = "0 mm";
+    widthInput.value = "0 mm";
+    sizeInput.value = "0\"";
+    osInput.value = "";
+    brandInput.value = "";
+    batteryInput.value = "0 mAh";
+    imageUrlInput.value = "";
+    phoneUrlInput.value = "";
+  }
+  
+  function cancelForm(){
+    overlay.style.display = "none";
+  }
+
+  //Functions for Add function
+  function startAdd(){
+    submitButton.addEventListener("click", finishAdd);
+    overlay.style.display = "block";
+    
+    startAddForm();
+  }
+
+  function finishAdd(){
+    overlay.style.display = "none";
+    fetchedValue = fetchFormValues();
+
+    console.log(fetchedValue);
+    
+    result = errorCheck(fetchedValue, "phone", tableData);
+    console.log("This is the result:  " + result);
+
+    if (result !== "No Error") {
+      window.location.href = createURL(localUrl, [['error', result]]);
+    } else {
+      addElement(fetchedValue); 
+    }
+  }
+
   //Functions for Edit function
   function startEdit() {
     if (!selectedData) {
       return;
     }
-    overlay.style.display = "block";
-    populateForm(selectedData);
-  }
 
-  function cancelEdit(){
-    overlay.style.display = "none";
+    submitButton.addEventListener("click", finishEdit);
+    overlay.style.display = "block";
+
+    populateForm(selectedData);
   }
 
   function finishEdit() {
     overlay.style.display = "none";
     
     fetchedValue = fetchFormValues();
-    
-    result = errorCheck(fetchedValue, "phone");
+    fetchedValue['id'] = selectedData.id;
+
+    result = errorCheck(fetchedValue, "phone", tableData);
     console.log("This is the result:  " + result);
 
     if (result !== "No Error") {
@@ -205,15 +288,19 @@ $tableName = "phone";
 
     deleteButton = document.querySelector(".delete");
 
+    addButton = document.querySelector(".add");
+
     editButton = document.querySelector(".edit");
-    closeEditButton = document.querySelector(".closeEdit");
-    cancelEditButton = document.querySelector(".cancelEdit");
+    submitButton = document.querySelector(".submit");
+    cancelButton = document.querySelector(".cancel");
 
     deleteButton.addEventListener("click",deleteElement);
 
+    addButton.addEventListener("click", startAdd);
+
     editButton.addEventListener("click", startEdit);
-    closeEditButton.addEventListener("click", finishEdit);
-    cancelEditButton.addEventListener("click", cancelEdit);
+
+    cancelButton.addEventListener("click", cancelForm);
 
     loadTable();
     initEditForm();
