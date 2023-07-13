@@ -123,9 +123,7 @@ function loginUser($conn, $username, $password) {
         else {
             $_SESSION["admin"] = "false";
         }
-
-        // header("location: ../home.php?your_name=" . $uidExists['username'] . "&admin=" . $_SESSION['admin']);
-        //change to the main page in the fture
+        
         header("location: ../menu.php");
         exit();
     }

@@ -69,6 +69,9 @@ if (isUserLoggedIn()) {
                 else if($_GET["error"] == "passwordLength") {
                     echo '<p class = "error">Password should be at least 8 letters long</p>';
                 }
+                else if($_GET['error'] == 'passwordSameAsUsername') {
+                    echo '<p class = "error">Password should not be the same as the username</p>';
+                }
             }
         ?>
 

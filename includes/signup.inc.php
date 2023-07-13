@@ -23,6 +23,11 @@ if (isset($_POST['usersignup'])) {
         exit();
     }
 
+    if ($password == $username) {
+        header("location: ../signup.php?error=passwordSameAsUsername");
+        exit();
+    }
+
     createUser($conn, $username, $password);
 
 } 
