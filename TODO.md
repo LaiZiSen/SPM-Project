@@ -23,18 +23,16 @@
 - [x] Admin Pages
     - [ ] User List Page
         - [ ] Print Function
-        - [ ] Delete
-        - [ ] Download
-        - [ ] Upload
+        - [x] Delete
     - [ ] Phone List Page
-        - [ ] Delete, Add
-        - [ ] Download
-        - [ ] Edit
+        - [x] Delete
+        - [x] Add
+        - [x] Edit
         - [ ] Print
         - [ ] Upload
 
 ### Backend
-- [ ] Signup auto login function
+- [x] Signup auto login function
     - Description: User should immedietly be logged in after sign up
 
 - [ ] Favourite handling 
@@ -53,7 +51,7 @@
     - Description: make sure the relations between table is set up
     - [ ] **Phone** Main Key to **Favourite List** Forverign key connection
 
-- [ ] Update the names to English
+- [x] Update the names to English
 
 ### Report
 - [ ] Change Databse and flow cart namings to english and align them with the code 

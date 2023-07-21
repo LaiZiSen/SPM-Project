@@ -56,7 +56,7 @@ if ($_SESSION['admin'] == "false"){
                     <button class="delete">Delete</button>
                     <button class="add">Add</button>
                     <button class="edit">Edit</button>
-                    <button class="upload">Upload</button>
+                    <input type="file" class="upload" accept=".csv" />
                 </div>
             </div>
             <table id="table">
@@ -87,14 +87,23 @@ if ($_SESSION['admin'] == "false"){
                             case "Empty":
                                 echo "Check if all inputs are not empty!";
                                 break;
-                            case "Format Error":
-                                echo "Check if the format is valid!";
+                            case "Variable Format Error":
+                                echo "Check if the variable format is valid!";
                                 break;
                             case "TableName Doesn't Exist!":
                                 echo "Logic Error: Tablename is not properly passed to table.inc.js, contact the developer!";
                                 break;
                             case "Name Repeated":
                                 echo "Do not repeat the names";
+                                break;
+                            case "Fetch Error":
+                                echo "Something wrong in the fetch process";
+                                break;
+                            case "Data Format Error":
+                                echo "Data Format Error";
+                                break;
+                            case "CsvError":
+                                echo $_GET["message"];
                                 break;
                             default:
                                 echo "Unknown Error: " . $error;

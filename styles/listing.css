@@ -23,11 +23,15 @@ p.selectedItemName {
     font-size: 20px;
 }
 
-div.tableHeader button {
+div.tableHeader button, input.upload {
     border: none;
     margin: 0 10px;
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
+}
+
+input.upload{
+    color: white;
 }
 
 table {

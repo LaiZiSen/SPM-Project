@@ -10,9 +10,6 @@ $tableName = "phone";
 <script>
   var selectedData;
   var tableData;
-  // var deleteButton;
-  // var editButton;
-  // var overlay;
   var ajaxUrl = "includes/ajaxRequest.inc.php";
   var localUrl = 'http://localhost/k-tech/phone_list.php';
 
@@ -33,7 +30,7 @@ $tableName = "phone";
     tableData = <?php echo getTable($conn, $tableName); ?>;
     const tableBody = document.querySelector("#table tbody");
     
-    console.log(tableData);
+    console.log("tabledata: " + tableData);
 
     tableBody.innerHTML = ""; 
     tableData.forEach(function(rowData) {
@@ -86,7 +83,7 @@ $tableName = "phone";
       });
   }
 
-  function addElement(data){
+  async function addElement(data){
     const prams = [
       ["method", "addElement"],
       ["tableName", "<?php echo $tableName?>"]
@@ -100,13 +97,106 @@ $tableName = "phone";
     
     url = createURL(ajaxUrl, prams);
 
-    fetch(url)
-      .then(response => {
-        window.location.href = localUrl;
-      })
-      .catch(error => {
-          console.error("Error:", error);
+    try {
+      const response = await fetch(url);
+      console.log("got response");
+      return true;
+    } catch (error) {
+      console.error("Error:", error);
+      return false;
+    }
+  }
+
+  function uploadCSV(event){
+    var file = event.target.files[0];
+    
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var contents = e.target.result;
+      processData(contents);
+    };
+    reader.readAsText(file);
+  }
+
+  function processData(csvData) {
+
+    var rows = csvData.split('\n');
+    var csvResults = [];
+
+    for (var i = 1; i < rows.length; i++) {
+      var header = rows[0].match(/(?<=^|,)(?:"([^"]|"")*"|[^,]*)/g).map(function(value) {
+        return value.replace(/^"|"$/g, '');
       });
+
+      var data = rows[i].match(/(?<=^|,)(?:"([^"]|"")*"|[^,]*)/g).map(function(value) {
+        return value.replace(/^"|"$/g, '');
+      });
+
+      var dictionary = {};
+
+      for (var j = 0; j < header.length; j++) {
+        var key = header[j];
+        var value;
+
+        if (key == "id") {
+          value = parseInt(data[j], 10);
+        } else {
+          value = data[j];
+        }
+
+        dictionary[key] = value;
+      }
+
+      csvResults.push(dictionary);
+    }
+    console.log(csvResults);
+    addCsvData(csvResults);
+  }
+
+  async function addCsvData(data){
+    errorResults = [];
+
+    for (var i = 0; i < data.length; i++) {
+      errorCheckResult = errorCheck(data[i], "<?php echo $tableName ?>", tableData);
+      console.log("tableData: ",tableData);
+
+      if (errorCheckResult == "Data Format Error") {
+        window.location.href =  createURL(localUrl, [["error", errorCheckResult]]);
+        break;
+      } else if (errorCheckResult == "No Error") {
+        await addElement(data[i]); //Here is problem
+      } else {
+        errorResults.push(errorCheckResult);
+      }
+    }
+
+    if (errorResults.length !== 0) {
+      const errorMessage = processCsvError(errorResults);
+      // console.log(createURL(localUrl, [["error", "CsvError"], ["message", errorMessage]]));
+      window.location.href = createURL(localUrl, [["error", "CsvError"], ["message", errorMessage]]);
+    } else {
+      window.location.href = localUrl;
+    }
+    
+  }
+
+  function processCsvError(result){
+    const occurrences = {};
+    var outputMessage = "CSV errors:  <br>";
+
+    for (i = 0; i < result.length; i++) {
+      const item = result[i];
+
+      occurrences[item] = occurrences[item]? occurrences[item] + 1 : 1;
+    }
+
+    console.log(occurrences);
+    const keys = Object.keys(occurrences);
+
+    for (i = 0; i < keys.length; i++) {
+      outputMessage = outputMessage + occurrences[keys[i]] + " " + keys[i] + "<br>";
+    }
+    return outputMessage;
   }
 
   //Form Functions
@@ -237,19 +327,25 @@ $tableName = "phone";
     startAddForm();
   }
 
-  function finishAdd(){
+  async function finishAdd(){
     overlay.style.display = "none";
     fetchedValue = fetchFormValues();
 
     console.log(fetchedValue);
     
-    result = errorCheck(fetchedValue, "phone", tableData);
+    result = errorCheck(fetchedValue, "<?php echo $tableName?>", tableData);
     console.log("This is the result:  " + result);
+
+    var addResult;
 
     if (result !== "No Error") {
       window.location.href = createURL(localUrl, [['error', result]]);
     } else {
-      addElement(fetchedValue); 
+      const respond = await addElement(fetchedValue);
+
+      if (respond) {
+        window.location.href = localUrl;
+      }
     }
   }
 
@@ -291,12 +387,17 @@ $tableName = "phone";
     addButton = document.querySelector(".add");
 
     editButton = document.querySelector(".edit");
+
+    uploadButton = document.querySelector(".upload");
+
     submitButton = document.querySelector(".submit");
     cancelButton = document.querySelector(".cancel");
 
     deleteButton.addEventListener("click",deleteElement);
 
     addButton.addEventListener("click", startAdd);
+
+    uploadButton.addEventListener("change", uploadCSV);
 
     editButton.addEventListener("click", startEdit);
 

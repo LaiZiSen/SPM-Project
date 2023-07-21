@@ -52,8 +52,8 @@ function checkVariableFormat(data, expectedFormats) {
     for (const variable in expectedFormats) {
         const value = data[variable];
         if (value && !value.endsWith(expectedFormats[variable])) {
-            console.log(value);
-            console.log(variable);
+            // console.log(value);
+            // console.log(variable);
             return false;
         } 
     }
@@ -62,12 +62,30 @@ function checkVariableFormat(data, expectedFormats) {
 }
 
 function checkElementNameExists (data, tableData){
+    console.log("checking repating names");
     for (var i = 0; i < tableData.length; i++) {
         if (tableData[i][data[0]] == data[1]) {
+            console.log(tableData[i][0] + data[1]);
             return true;
         }
     }
     return false;
+}
+
+function checkObjectKeys(obj) {
+    const expectedDataKeys = [
+        "phone_name", "height", "size", "width", "phone_url", "image_url", "os", "brand", "battery"
+    ];
+
+    const objKeys = Object.keys(obj);
+
+    // Check for missing keys
+    const missingKeys = expectedDataKeys.filter(key => key !== "id" && !objKeys.includes(key));
+
+    // Check for extra keys
+    const extraKeys = objKeys.filter(key => key !== "id" && !expectedDataKeys.includes(key));
+
+    return missingKeys.length === 0 && extraKeys.length === 0;
 }
 
 function errorCheck(data, tableName, tableData){
@@ -80,6 +98,10 @@ function errorCheck(data, tableName, tableData){
                 battery: ' mAh'
             };
 
+            const expectedDataKeys = [
+                "phone_name", "height", "size", "width", "phone_url", "image_url", "os", "brand", "battery"
+            ];
+
             const emptySample = {
                 height: '0 mm',
                 size: '0\"',
@@ -87,15 +109,20 @@ function errorCheck(data, tableName, tableData){
                 battery: '0 mAh'
             };
 
+            if (!checkObjectKeys(data, expectedDataKeys)) {
+                return "Data Format Error";
+            }
+
             if (checkEmpty(data, emptySample)) {
                 return "Empty";
             }
 
             if (!checkVariableFormat(data, expectedFormats)) {
-                return "Format Error";
+                return "Variable Format Error";
             }
 
             if (checkElementNameExists(["phone_name",data.phone_name], tableData)) {
+                console.log("returning name repeated");
                 return "Name Repeated";
             }
 

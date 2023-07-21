@@ -37,13 +37,15 @@ if (isset($_GET['method'])) {
                 foreach ($_GET as $key => $value) {
                     if ($key !== 'method' && $key !== 'tableName') {
                         // Process the key-value pair here
-                        echo "Key: $key, Value: $value <br>"; //collect data
                         $data[$key] = $value;
                     }
                 }
-                echo json_encode($data);
-                echo "<br><br><br>";
-                echo addElement($conn, $_GET['tableName'], $data);
+                $result = addElement($conn, $_GET['tableName'], $data);
+                $response = [
+                    'data' => $data,
+                    'result' => $result
+                ];
+                echo json_encode($response);
                 break;
 
         default:
