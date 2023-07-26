@@ -8,7 +8,6 @@ body {
 div.content {
     padding-top: 5%;
     padding-bottom: 10%;
-    /* background-color: rgb(25, 36, 45); */
     margin-left: 10%;
     margin-right: 10%;
 }
@@ -38,7 +37,6 @@ div.info {
 
 div.info p {
     word-wrap: normal;
-    /* overflow: hidden; */
 }
 
 li {

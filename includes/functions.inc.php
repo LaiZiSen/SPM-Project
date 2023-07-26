@@ -169,6 +169,24 @@ function getTable($conn, $tableName){
     return json_encode($result);
 }
 
+function getElement($conn, $tableName, $id) {
+    $result;
+    $sql = "SELECT * FROM " . $tableName . " WHERE id = " . $id;
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    $result = mysqli_fetch_all($resultData, MYSQLI_ASSOC);
+
+    mysqli_stmt_close($stmt);
+
+    return json_encode($result);
+}
+
+
 function deleteElement($conn, $tableName, $id){
     $sql = "DELETE FROM " . $tableName . " WHERE id = " . $id;
 
@@ -221,3 +239,44 @@ function addElement($conn, $tableName, $data) {
     mysqli_stmt_close($stmt);
 }
 
+function getFavourites($conn, $user_id){
+    $result;
+    $sql = "SELECT phone_id FROM favourites WHERE user_id = " . $user_id;
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    $result = mysqli_fetch_all($resultData, MYSQLI_ASSOC);
+
+    mysqli_stmt_close($stmt);
+
+    return json_encode($result);
+}
+
+function addFavourite($conn, $user_id, $phone_id) {
+    $sql = "INSERT INTO favourites (phone_id, user_id)
+            VALUES (?, ?)";
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, 'ii', $phone_id, $user_id);
+    mysqli_stmt_execute($stmt);
+    
+    mysqli_stmt_close($stmt);
+}
+
+function removeFavourite($conn, $user_id, $phone_id) {
+    $sql = "DELETE FROM favourites
+            WHERE phone_id = ? AND user_id = ?;
+    ";
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, 'ii', $phone_id, $user_id);
+    mysqli_stmt_execute($stmt);
+    
+    mysqli_stmt_close($stmt);
+}

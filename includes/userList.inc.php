@@ -57,7 +57,6 @@ $tableName = "user";
   }
 
   document.addEventListener("DOMContentLoaded", function(){
-    console.log("hello?");
     deleteButton = document.querySelector(".delete");
 
     deleteButton.addEventListener("click",deleteElement);

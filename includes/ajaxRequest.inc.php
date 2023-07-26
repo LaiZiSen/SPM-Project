@@ -22,8 +22,6 @@ if (isset($_GET['method'])) {
             $data = [];
             foreach ($_GET as $key => $value) {
                 if ($key !== 'method' && $key !== 'tableName') {
-                    // Process the key-value pair here
-                    echo "Key: $key, Value: $value <br>"; //collect data
                     $data[$key] = $value;
                 }
             }
@@ -32,21 +30,34 @@ if (isset($_GET['method'])) {
             echo editElement($conn, $_GET['tableName'], $data);
             break;
 
-            case "addElement":
-                $data = [];
-                foreach ($_GET as $key => $value) {
-                    if ($key !== 'method' && $key !== 'tableName') {
-                        // Process the key-value pair here
-                        $data[$key] = $value;
-                    }
+        case "addElement":
+            $data = [];
+            foreach ($_GET as $key => $value) {
+                if ($key !== 'method' && $key !== 'tableName') {
+                    $data[$key] = $value;
                 }
-                $result = addElement($conn, $_GET['tableName'], $data);
-                $response = [
-                    'data' => $data,
-                    'result' => $result
-                ];
-                echo json_encode($response);
-                break;
+            }
+            $result = addElement($conn, $_GET['tableName'], $data);
+            $response = [
+                'data' => $data,
+                'result' => $result
+            ];
+            echo json_encode($response);
+            break;
+
+        case "addFavourite":
+            $user_id = $_GET['user_id'];
+            $phone_id = $_GET['phone_id'];
+
+            addFavourite($conn, $user_id, $phone_id);
+            break;
+
+        case "removeFavourite":
+            $user_id = $_GET['user_id'];
+            $phone_id = $_GET['phone_id'];
+            
+            removeFavourite($conn, $user_id, $phone_id);
+            break;
 
         default:
             echo "Invalid method. Method: " . $method;
@@ -56,5 +67,3 @@ if (isset($_GET['method'])) {
     echo "No Method Specified!";
 }
 
-
-//localhost/k-tech/includes/ajaxRequest.inc.php?method=addElement&tableName=phone&phone_name=as&height=1%20mm&width=2%20mm&size=2%22&os=asd&brand=12&battery=2%20mAh&image_url=aasda&phone_url=2323

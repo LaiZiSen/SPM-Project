@@ -1,0 +1,36 @@
+
+p{
+    color: white
+}
+
+p.title {
+    font-size: 50px;
+    padding-left: 20px;
+}
+
+div.info-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+div.img-box {
+    flex: 5;
+    max-height: 600px;
+    /* background-color: rgb(225, 225, 225); */
+}
+
+img.item-img {
+    /* max-width: 50%; */
+    max-height: 600px;
+    object-fit: contain;
+}
+
+div.info-list {
+    padding: 20px;
+    flex: 5;
+    width: 100%;
+}
+
+div.info-list p,a {
+    font-size: 30px;
+}

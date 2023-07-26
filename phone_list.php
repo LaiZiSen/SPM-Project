@@ -42,9 +42,7 @@ if ($_SESSION['admin'] == "false"){
                 <a onclick="goBack()">Back</a>
                 <script>
                     function goBack() {
-                    if (window.history.length > 1) {
-                        window.history.back();
-                    }
+                        window.location.href = "index.php";
                     }
                 </script>
             </div>

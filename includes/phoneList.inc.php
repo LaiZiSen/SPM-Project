@@ -370,7 +370,7 @@ $tableName = "phone";
     result = errorCheck(fetchedValue, "phone", tableData);
     console.log("This is the result:  " + result);
 
-    if (result !== "No Error") {
+    if (result !== "No Error" && result !== "Name Repeated") {
       window.location.href = createURL(localUrl, [['error', result]]);
     } else {
       editElement(fetchedValue);
