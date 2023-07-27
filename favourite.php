@@ -24,6 +24,9 @@ if ($_SESSION['admin'] == "true"){
 
         <link rel="stylesheet" href="styles/general.css">
         <link rel="stylesheet" href="styles/header3.css">
+        <link rel="stylesheet" href="styles/favourite.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
         <title>Favourite</title>
     </head>
@@ -46,7 +49,11 @@ if ($_SESSION['admin'] == "true"){
                 </script>
             </div>
         </div>
-        <div class="content">   
+        <div class="content">
+            <h1>Favourites</h1>
+            <div class='favourite-grid'>
+                <?php include "includes/favourite.inc.php"; ?>
+            </div>
         </div>
     </body>
 </html>

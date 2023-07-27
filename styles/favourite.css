@@ -1,0 +1,53 @@
+
+h1 {
+    color: white;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+}
+
+div.content {
+    padding-top: 5%;
+    padding-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+div.favourite-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+div.favourite-item {
+    height: 200px;
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+div.favourite-item  * {
+    display: inline-block;
+}
+
+div.favourite-item img {
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
+
+p.item-name {
+    cursor: default;
+    font-size: 50px;
+    padding: auto 0;
+}
+
+div.delete-element {
+    margin: 30px;
+    font-size: 40px;
+}
