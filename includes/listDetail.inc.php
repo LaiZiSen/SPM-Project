@@ -32,7 +32,7 @@ $phone_data = getElement($conn, "phone", $phone_id);
 
 
     document.addEventListener("DOMContentLoaded", function(){
-        const location = document.querySelector('.content');
+        const location = document.querySelector('.detail-box');
 
         location.innerHTML = generateHTML();
     });

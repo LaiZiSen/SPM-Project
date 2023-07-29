@@ -29,7 +29,7 @@ $favouriteData = getFavourites($conn, $uid);
 
     function loadItems(){
         const itemData = <?php echo $itemData;?>;
-        const loadLocation = document.querySelector('.content');
+        const loadLocation = document.querySelector('.suggestion-list');
 
         console.log(itemData);
         console.log(favourites);
@@ -37,6 +37,12 @@ $favouriteData = getFavourites($conn, $uid);
         itemData.forEach(function(itemData){ 
             createItem(itemData, favourites ,loadLocation);
         });
+
+        const comparePageButton = document.querySelector('.compare-button');
+        comparePageButton.addEventListener("click", function () {
+            window.location.href = "compare.php";
+        })
+
     }
 
     function createItem(phone, favourites, location){

@@ -37,7 +37,6 @@ if (isUserLoggedIn()) {
                     <div style="flex-grow: 2.4; flex-basis: 0;"></div>
                     <a class="header_links" href="login.php">Login</a>
                     <a class="header_links" href="signup.php">Signup</a>
-                    <a class="header_links" href="">About Us</a>
                 </div>
                 <div class="content">
                     <div class="introduction">

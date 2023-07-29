@@ -56,13 +56,17 @@ if ($_SESSION['admin'] == "true"){
                 <a onclick="goBack()">Back</a>
                 <script>
                     function goBack() {
-                        <?php 
-                            if (!isset($_GET['phone_id'])) {
-                                echo 'window.location.href = "home.php";';
-                            } else {
-                                echo 'window.location.href = "suggestion.php";';
-                            }
-                        ?>
+                        if (window.history.length > 1) {
+                            window.history.back();
+                        } else {
+                            <?php 
+                                if (!isset($_GET['phone_id'])) {
+                                    echo 'window.location.href = "home.php";';
+                                } else {
+                                    echo 'window.location.href = "suggestion.php";';
+                                }
+                            ?>
+                        }
                     }
                 </script>
             </div>
@@ -70,8 +74,16 @@ if ($_SESSION['admin'] == "true"){
         <div class="content">
             <?php 
                 if (! isset($_GET['phone_id'])) {
+                    echo "
+                        <div class='content-header'>
+                            <p class='title'>Suggestion List</p>
+                            <button class='compare-button'>Compare Items</button>
+                        </div>
+                    ";
+                    echo '<div class="suggestion-list"></div>';
                     include "includes/listSuggestion.inc.php"; 
                 } else {
+                    echo "<div class='detail-box'></div>";
                     include "includes/listDetail.inc.php";
                 }
                 
