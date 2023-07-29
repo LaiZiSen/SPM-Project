@@ -12,13 +12,13 @@
 - [x] Phone Information page
     - [x] Back Function to menu page
 
-- [ ] Favourite List
-    - [ ] Allow user to click and go to the Phone Suggestion page where the product is written
+- [x] Favourite List
+    - [x] Allow user to click and go to the Phone Suggestion page where the product is written
 
-- [ ] Phone Suggestion
-    - [ ] Phone Comparing Site
+- [x] Phone Suggestion
+    - [x] Phone Comparing Site
 
-- [ ] Add or Remove About Me page
+- [x] Add or Remove About Me page (removed)
 
 - [x] Admin Pages
     - [ ] User List Page
@@ -29,27 +29,27 @@
         - [x] Add
         - [x] Edit
         - [ ] Print
-        - [ ] Upload
+        - [x] Upload
 
 ### Backend
 - [x] Signup auto login function
     - Description: User should immedietly be logged in after sign up
 
-- [ ] Favourite handling 
+- [x] Favourite handling 
     - Description: User should be able to favourite and unfavourite phones from phone suggestion
-    - [ ] Pop up that notifies user if the procedure **added**, **removed** or **failed**
-    - [ ] Delete, Add Functions
+    - [x] Pop up that notifies user if the procedure **added**, **removed** or **failed**
+    - [x] Delete, Add Functions
 
-- [ ] Phone Suggestion Backend
+- [x] Phone Suggestion Backend
     - Description: Lists out all phone suggestions avalable in the database
 
 ### Database
-- [ ] Phone Suggestion Databse
+- [x] Phone Suggestion Databse
     - Description: The table should be named **Phone** with multiple variables that are used for **comparing phone specs** and **displaying phone suggestions**
 
-- [ ] Foreign keys
+- [x] Foreign keys
     - Description: make sure the relations between table is set up
-    - [ ] **Phone** Main Key to **Favourite List** Forverign key connection
+    - [x] **Phone** Main Key to **Favourite List** Forverign key connection
 
 - [x] Update the names to English
 
