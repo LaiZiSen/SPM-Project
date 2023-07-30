@@ -10,7 +10,7 @@ $itemData = getTable($conn, $tableName);
 ?>
 <script>
     const itemData = <?php echo $itemData?>;    
-    var leftDivItem = 1;
+    var leftDivItem = null;
     var rightDivItem = null;
     var leftDiv;
     var rightDiv;
@@ -30,6 +30,7 @@ $itemData = getTable($conn, $tableName);
         return `
             <div class="item-details">
             <img class="item-img" src="${foundItemData.image_url}" alt="" onerror='this.src="img/error.jpg"'>
+            <p class="detail-text">Name: ${foundItemData.phone_name}</p>
             <p class="detail-text">Height: ${foundItemData.height}</p>
             <p class="detail-text">Width: ${foundItemData.width}</p>
             <p class="detail-text">Size: ${foundItemData.size}</p>

@@ -25,6 +25,8 @@ if ($_SESSION['admin'] == "false"){
         <link rel="stylesheet" href="styles/general.css">
         <link rel="stylesheet" href="styles/listing.css">
         <link rel="stylesheet" href="styles/header3.css">
+        
+        <link rel="stylesheet" href="styles/listing.css" media="print">
 
         <title>Information</title>
     </head>
@@ -51,6 +53,7 @@ if ($_SESSION['admin'] == "false"){
             <div class="tableContainer">
                 <div class="tableHeader">
                     <p class="selectedItemName"></p>
+                    <button class='print' onclick="printPage()">Print</button>
                     <button class="delete">Delete</button>
                 </div>
             </div>

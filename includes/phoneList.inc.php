@@ -378,6 +378,10 @@ $tableName = "phone";
 
   }
 
+  function printPage() {
+    window.print();
+  }
+
   document.addEventListener("DOMContentLoaded", function(){
     overlay = document.querySelector(".overlay");
     errorElement = document.querySelector(".error");

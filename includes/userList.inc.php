@@ -56,6 +56,10 @@ $tableName = "user";
     //reload the table
   }
 
+  function printPage() {
+    window.print();
+  }
+
   document.addEventListener("DOMContentLoaded", function(){
     deleteButton = document.querySelector(".delete");
 
