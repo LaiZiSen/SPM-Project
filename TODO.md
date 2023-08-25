@@ -21,10 +21,10 @@
 - [x] Add or Remove About Me page (removed)
 
 - [x] Admin Pages
-    - [ ] User List Page
-        - [ ] Print Function
+    - [x] User List Page
+        - [x] Print Function
         - [x] Delete
-    - [ ] Phone List Page
+    - [x] Phone List Page
         - [x] Delete
         - [x] Add
         - [x] Edit

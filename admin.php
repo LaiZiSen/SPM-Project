@@ -10,6 +10,17 @@ if ($admin = !isUserLoggedIn()) {
 if ($_SESSION['admin'] == "false"){
     header("Location: menu.php");
 }
+if (isset($_GET['message'])){
+    $message = $_GET['message'];
+
+    echo "
+    <script>
+        alert('$message');
+    </script>
+    ";
+    // alert($_GET['message']);
+}
+
 ?>
 
 <!DOCTYPE html>

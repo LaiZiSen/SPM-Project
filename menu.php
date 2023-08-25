@@ -8,8 +8,23 @@ if (!isUserLoggedIn()) {
     exit();
 }
 if ($_SESSION['admin'] == "true"){
-    header("Location: admin.php");
-} 
+    if (isset($_GET['message'])) {
+        header("Location: admin.php?message={$_GET['message']}");
+    } else {
+        header("Location: admin.php");
+    }
+}
+if (isset($_GET['message'])){
+    $message = $_GET['message'];
+
+    echo "
+    <script>
+        alert('$message');
+    </script>
+    ";
+    // alert($_GET['message']);
+}
+
 ?>
 
 <!DOCTYPE html>

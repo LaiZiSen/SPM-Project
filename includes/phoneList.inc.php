@@ -175,7 +175,8 @@ $tableName = "phone";
       // console.log(createURL(localUrl, [["error", "CsvError"], ["message", errorMessage]]));
       window.location.href = createURL(localUrl, [["error", "CsvError"], ["message", errorMessage]]);
     } else {
-      window.location.href = localUrl;
+      successUrl = createURL(localUrl, [['message','Csv Upload is Successful!']]);
+      window.location.href = successUrl;
     }
     
   }

@@ -46,7 +46,7 @@ function uidExists($conn, $username) {
 
 function passwordLength($password) {
     $result;
-    if (strlen($password) < 8) {
+    if (strlen($password) < 8 or strlen($password) > 20) {
         $result = true;
     } else {
         $result = false;
@@ -123,9 +123,6 @@ function loginUser($conn, $username, $password) {
         else {
             $_SESSION["admin"] = "false";
         }
-        
-        header("location: ../menu.php");
-        exit();
     }
 }
 
@@ -279,4 +276,23 @@ function removeFavourite($conn, $user_id, $phone_id) {
     mysqli_stmt_execute($stmt);
     
     mysqli_stmt_close($stmt);
+}
+
+function getBrand($conn, $tableName, $brandName){
+    $result;
+    $sql = "SELECT * FROM " . $tableName . " WHERE brand = ?";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (mysqli_stmt_prepare($stmt, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $brandName);
+        mysqli_stmt_execute($stmt);
+
+        $resultData = mysqli_stmt_get_result($stmt);
+
+        $result = mysqli_fetch_all($resultData, MYSQLI_ASSOC);
+
+        mysqli_stmt_close($stmt);
+    }
+
+    return json_encode($result);
 }
