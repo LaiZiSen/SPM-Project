@@ -10,8 +10,8 @@ if ($admin = !isUserLoggedIn()) {
 if ($_SESSION['admin'] == "false"){
     header("Location: menu.php");
 }
-if (isset($_GET['message'])){
-    $message = $_GET['message'];
+if (isset($_GET['popup'])){
+    $message = $_GET['popup'];
 
     echo "
     <script>
@@ -89,6 +89,14 @@ if (isset($_GET['message'])){
                     <?php include "includes/phoneList.inc.php"; ?>
                 </tbody>
             </table>
+            <div class="filter-container">
+                <p class="filter-description">Filter by Brand:</p>
+                <input type="text" class="brand-filter" placeholder="Enter brand name">
+                <button class="filter-button">Filter</button>
+                <button class='cancel-filter-button'>Cancel Filter</button>
+                <button id="changeFontSize">Change Font Size</button>
+            </div>
+            <script src= 'includes/tableFontSizer.inc.js'></script>
             <p class="error">
                 <?php
                     $error = isset($_GET["error"]) ? $_GET["error"] : '';

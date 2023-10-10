@@ -27,7 +27,13 @@ $tableName = "phone";
 
   //Table Functions
   function loadTable() {
-    tableData = <?php echo getTable($conn, $tableName); ?>;
+    tableData = <?php 
+      if (isset($_GET['brand'])) {
+        echo getBrand($conn, "phone", $_GET['brand']);
+      } else {
+        echo getTable($conn, $tableName); 
+      }
+    ?>;
     const tableBody = document.querySelector("#table tbody");
     
     console.log("tabledata: " + tableData);
@@ -161,7 +167,7 @@ $tableName = "phone";
       console.log("tableData: ",tableData);
 
       if (errorCheckResult == "Data Format Error") {
-        window.location.href =  createURL(localUrl, [["error", errorCheckResult]]);
+        window.location.href =  createURL(localUrl, [["error", errorCheckResult], ['popup','Csv Upload is Not Successful!']]);
         break;
       } else if (errorCheckResult == "No Error") {
         await addElement(data[i]); //Here is problem
@@ -173,9 +179,9 @@ $tableName = "phone";
     if (errorResults.length !== 0) {
       const errorMessage = processCsvError(errorResults);
       // console.log(createURL(localUrl, [["error", "CsvError"], ["message", errorMessage]]));
-      window.location.href = createURL(localUrl, [["error", "CsvError"], ["message", errorMessage]]);
+      window.location.href = createURL(localUrl, [["error", "CsvError"], ["message", errorMessage], ['popup','Csv Upload is Not Successful!']]);
     } else {
-      successUrl = createURL(localUrl, [['message','Csv Upload is Successful!']]);
+      successUrl = createURL(localUrl, [['popup','Csv Upload is Successful!']]);
       window.location.href = successUrl;
     }
     
@@ -340,7 +346,7 @@ $tableName = "phone";
     var addResult;
 
     if (result !== "No Error") {
-      window.location.href = createURL(localUrl, [['error', result]]);
+      window.location.href = createURL(localUrl, [['error', result], ['popup','Csv Upload is Not Successful!']]);
     } else {
       const respond = await addElement(fetchedValue);
 
@@ -372,7 +378,7 @@ $tableName = "phone";
     console.log("This is the result:  " + result);
 
     if (result !== "No Error" && result !== "Name Repeated") {
-      window.location.href = createURL(localUrl, [['error', result]]);
+      window.location.href = createURL(localUrl, [['error', result], ['popup','Csv Upload is Not Successful!']]);
     } else {
       editElement(fetchedValue);
     }
@@ -381,6 +387,15 @@ $tableName = "phone";
 
   function printPage() {
     window.print();
+  }
+
+  function filterBrand(){
+    brand = filterInput.value;
+    window.location.href = createURL(localUrl, [['brand', brand]]);
+  }
+
+  function cancelFilter(){
+    window.location.href = localUrl;
   }
 
   document.addEventListener("DOMContentLoaded", function(){
@@ -398,6 +413,10 @@ $tableName = "phone";
     submitButton = document.querySelector(".submit");
     cancelButton = document.querySelector(".cancel");
 
+    filterInput = document.querySelector(".brand-filter");
+    filterButton = document.querySelector(".filter-button");
+    cancelFilterButton = document.querySelector(".cancel-filter-button");
+
     deleteButton.addEventListener("click",deleteElement);
 
     addButton.addEventListener("click", startAdd);
@@ -407,6 +426,9 @@ $tableName = "phone";
     editButton.addEventListener("click", startEdit);
 
     cancelButton.addEventListener("click", cancelForm);
+
+    filterButton.addEventListener("click", filterBrand);
+    cancelFilterButton.addEventListener("click", cancelFilter);
 
     loadTable();
     initEditForm();

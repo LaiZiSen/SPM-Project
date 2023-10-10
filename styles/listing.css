@@ -39,11 +39,13 @@ table {
     border-collapse: collapse;
     font-family: 'Montserrat', sans-serif;
     color: white;
+    font-size: 16px;
 }
 
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
+    font-size: inherit;
 }
 
 .selected {
@@ -100,4 +102,17 @@ p.error {
     border: none;
     padding: 10px 12px;
     color: white;    
+}
+
+.filter-container .filter-description {
+    color: white;
+    font-size: 20px;
+    display: inline;
+}
+
+.filter-container .filter-description button{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 20px;
+    display: inline;
 }

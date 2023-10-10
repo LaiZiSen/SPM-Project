@@ -39,7 +39,7 @@ if (isUserLoggedIn()) {
                     </a>
                     <div style="flex-grow: 2.4; flex-basis: 0;"></div>
                     <a class="header_links" href="signup.php">Signup</a>
-                    <a class="header_links" href="">About Us</a>
+                    
                 </div>
                 <div class="content">
                     <div class="login-box">
@@ -54,6 +54,11 @@ if (isUserLoggedIn()) {
                             <p>Don't have account? <a href="signup.php">Signup</a></p>
         <?php
             if (isset($_GET["error"])){
+                echo "
+                    <script>
+                        alert('Login Failed!');
+                    </script>
+                    ";
                 if($_GET["error"] == "stmtFailed") {
                     echo '<p class = "error">Something went wrong try again!</p>';
                 } 

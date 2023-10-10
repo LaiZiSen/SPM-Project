@@ -32,7 +32,7 @@ if (isset($_POST['usersignup'])) {
     loginUser($conn, $username, $password);
 
     //go to menu with signin successful message
-    header("location: ../menu.php?message=Sign%20in%20Sucessful!");
+    header("location: ../menu.php?message=Sign%20up%20Sucessful!");
 } 
 else {
     header("location: ../signup.php");
