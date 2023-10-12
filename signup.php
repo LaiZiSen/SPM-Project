@@ -51,7 +51,7 @@ if (isUserLoggedIn()) {
                             <p class="form-label">Username</p>
                             <input type="text" placeholder="sample" name='username'>
                             <p class="form-label">Password</p>
-                            <input type="password" placeholder="password" name='password'>
+                            <input type="password" placeholder="password 8 - 20 chracters" name='password'>
                             <button type='submit' name="usersignup">Signup</button>
                             <p>Have an account?<a href="login.php">Login</a></p>
 
